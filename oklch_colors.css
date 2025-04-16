@@ -340,27 +340,30 @@
 }
 
 .gradient-button {
-    padding: 1rem 2rem;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
     cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    --start-color: oklch(0.6 0.2 30);
+    --end-color: oklch(0.6 0.2 120);
     background: linear-gradient(
         to right,
-        oklch(0.6 0.2 30),
-        oklch(0.6 0.2 120)
+        var(--start-color),
+        var(--end-color)
     );
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .gradient-button:hover {
-    background: linear-gradient(
-        to right,
-        oklch(0.7 0.2 30),
-        oklch(0.7 0.2 120)
-    );
+    --start-color: oklch(0.7 0.2 30);
+    --end-color: oklch(0.7 0.2 120);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -387,9 +390,6 @@
 }
 
 .btn {
-    --bg-color: oklch(0.6 0.2 30);
-    background-color: var(--bg-color);
-    color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     border: none;
@@ -397,6 +397,17 @@
     transition: all 0.3s ease;
     font-family: inherit;
     font-size: 1rem;
+    color: white;
+    --bg-color: oklch(0.6 0.2 30);
+    background-color: var(--bg-color);
+}
+
+.btn-alt {
+    --bg-color: oklch(0.6 0.2 120);
+}
+
+.btn-danger {
+    --bg-color: oklch(0.6 0.2 0);
 }
 
 .btn:hover,
@@ -408,14 +419,6 @@
 .btn:active {
     background-color: oklch(from var(--bg-color) calc(l - 0.15) c h);
     transform: translateY(2px);
-}
-
-.btn-alt {
-    --bg-color: oklch(0.6 0.2 120);
-}
-
-.btn-danger {
-    --bg-color: oklch(0.6 0.2 0);
 }
 
 @media (max-width: 768px) {
