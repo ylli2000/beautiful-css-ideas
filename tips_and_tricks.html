@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Tips and Tricks</title>
+    <link rel="stylesheet" href="tips_and_tricks.css">
+    <link rel="stylesheet" href="common.css">
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <!-- Highlight.js Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Highlight.js CSS Language Support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <div class="back-button-wrapper">
+        <a href="index.html" class="back-button">Back to Projects</a>
+    </div>
+    <div class="container">
+        <div class="floating-index">
+            <div class="index-header">
+                <h4>Tips & Tricks</h4>
+                <div class="burger-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <ul class="index-list">
+                <li><a href="#text-wrap-example">1. Text Wrapping</a></li>
+                <li><a href="#interpolate-size-example">2. Interpolate Size</a></li>
+                <li><a href="#field-sizing-example">3. Field Sizing</a></li>
+                <li><a href="#anchor-positioning-example">4. Anchor Positioning</a></li>
+                <li><a href="#padding-inline-example">5. Logical Padding</a></li>
+            </ul>
+        </div>
+
+        <div class="intro">
+            <h1>CSS Tips and Tricks</h1>
+            <p>
+                A collection of useful CSS techniques and best practices that can help you write
+                more efficient and maintainable styles. These tips cover various aspects of CSS,
+                from layout to animations and everything in between.
+            </p>
+        </div>
+
+        <section id="text-wrap-example">
+            <div class="example-group">
+                <h3>1. Text Wrapping with Balance</h3>
+                <div class="browser-support">Browser Support: 87.5% (Chrome 114+, Edge 114+, Safari 16.5+, Firefox 116+)</div>
+                <p>The text-wrap: balance property helps create more aesthetically pleasing text blocks by balancing line lengths. This is particularly useful for headings and short paragraphs where you want to avoid single words on the last line.</p>
+                
+                <div class="example-code">
+                    <pre><code class="language-css">.unbalanced-text {
+    max-width: 50ch;
+}
+
+.balanced-text {
+    max-width: 50ch;
+    text-wrap: balance;
+}</code></pre>
+                </div>
+
+                <div class="text-examples">
+                    <div class="text-example">
+                        <h4>Without text-wrap: balance</h4>
+                        <div class="unbalanced-text">
+                            This is a heading that demonstrates how text wrapping works without the balance property. Notice how the last line might be awkwardly short.
+                        </div>
+                    </div>
+
+                    <div class="text-example">
+                        <h4>With text-wrap: balance</h4>
+                        <div class="balanced-text">
+                            This is a heading that demonstrates how text wrapping works without the balance property. Notice how the last line might be awkwardly short.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interpolate-size-example">
+            <div class="example-group">
+                <h3>2. Font Size Interpolation with interpolate-size</h3>
+                <div class="browser-support">Browser Support: 87.5% (Chrome 118+, Edge 118+, Safari 17+, Firefox 119+)</div>
+                <p>
+                    The interpolate-size property allows smooth font size transitions between size keywords like small, medium, and large.
+                    This is particularly useful for responsive design where you want text to scale fluidly with the viewport.
+                </p>
+                
+                <div class="example-code">
+                    <pre><code class="language-css">:root {
+    interpolate-size: allow-keywords;
+}
+
+.normal-text {
+    font-size: medium; /* No interpolation between keywords */
+}
+
+.interpolated-text {
+    font-size: calc(small + (large - small) * (100vw - 320px) / (1200 - 320));
+}
+
+/* Height transition example */
+.height-transition-box {
+    height: 2.5rem;
+    overflow: hidden;
+    transition: height 1s ease;
+}
+
+.height-transition-box:hover,
+.height-transition-box:focus-within {
+    height: max-content; /* Works with interpolate-size */
+}</code></pre>
+                </div>
+
+                <div class="interpolate-examples">
+                    <div class="interpolate-example">
+                        <h4>Without interpolate-size</h4>
+                        <div class="interpolate-container">
+                            <div class="normal-small">Small (16px)</div>
+                            <div class="normal-medium">Medium (18px)</div>
+                            <div class="normal-large">Large (20px)</div>
+                        </div>
+                        <p class="example-note">Resize the window to see that keywords maintain fixed sizes</p>
+                    </div>
+
+                    <div class="interpolate-example">
+                        <h4>With interpolate-size: allow-keywords</h4>
+                        <div class="interpolate-container">
+                            <div class="interpolated-text">Smooth interpolation between small and large</div>
+                        </div>
+                        <p class="example-note">Resize the window to see the font size scale smoothly</p>
+                    </div>
+                    
+                    <div class="interpolate-example">
+                        <h4>Height Transition with interpolate-size</h4>
+                        <div class="height-transition-box">
+                            <p>Hover over this box to see the height transition to max-content.</p>
+                            <p>With interpolate-size: allow-keywords, browsers can smoothly animate between fixed heights and content-based heights.</p>
+                            <p>This is particularly useful for expandable sections, accordions, and other interactive elements that need to reveal content.</p>
+                            <p>Try hovering and see how the transition animates smoothly!</p>
+                        </div>
+                        <p class="example-note">Hover over the box to see the smooth height transition</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="field-sizing-example">
+            <div class="example-group">
+                <h3>3. Input Field Sizing with field-sizing</h3>
+                <div class="browser-support">Browser Support: 87.5% (Chrome 114+, Edge 114+, Safari 16.5+, Firefox 116+)</div>
+                <p>The field-sizing: content property allows input fields to automatically adjust their width based on their content. This is particularly useful for form inputs where you want the field to grow with the text.</p>
+                
+                <div class="example-code">
+                    <pre><code class="language-css">.fixed-input {
+    width: 200px;
+}
+
+.content-sized-input {
+    field-sizing: content;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+/* Textarea examples */
+.fixed-textarea {
+    width: 200px;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+.content-sized-textarea {
+    field-sizing: content;
+    width: 200px;
+    min-height: 100px;
+    max-height: 200px;
+}</code></pre>
+                </div>
+
+                <div class="input-examples">
+                    <div class="input-example">
+                        <h4>Fixed Width Input</h4>
+                        <input type="text" class="fixed-input" placeholder="Type something...">
+                    </div>
+
+                    <div class="input-example">
+                        <h4>Content-Sized Input</h4>
+                        <input type="text" class="content-sized-input" placeholder="Type something...">
+                    </div>
+                    
+                    <div class="input-example">
+                        <h4>Fixed Height Textarea</h4>
+                        <textarea class="fixed-textarea" placeholder="Type multiple lines here..."></textarea>
+                    </div>
+
+                    <div class="input-example">
+                        <h4>Content-Sized Textarea</h4>
+                        <textarea class="content-sized-textarea" placeholder="Type multiple lines here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="anchor-positioning-example">
+            <div class="example-group">
+                <h3>4. CSS Anchor Positioning</h3>
+                <div class="browser-support">Browser Support: 87.5% (Chrome 114+, Edge 114+, Safari 16.5+, Firefox 116+)</div>
+                <p>
+                    The CSS anchor() function allows elements to be positioned relative to other elements using named anchor points.
+                    This example demonstrates how to create a resizable infobox using anchor points and interactive drag controls.
+                </p>
+                <div class="example-code">
+                    <pre><code>/* the % percentage means the distance from the anchor point
+ to the edge of the infobox. It causes the gripping dot to be 
+ landing half way in and half way out of the infobox border. */
+.infobox {
+    position-anchor: --myAnchorTL;
+    position: fixed;
+    top: anchor(--myAnchorTL 50%);
+    left: anchor(--myAnchorTL 50%);
+    bottom: anchor(--myAnchorBR 50%);
+    right: anchor(--myAnchorBR 50%);
+}</code></pre>
+                </div>
+                <div class="anchor-demo">
+                    <div class="anchor-grip" id="anchorTL"></div>
+                    <div class="anchor-grip" id="anchorBR"></div>
+                    <div class="infobox">
+                        <p>Drag the grips to resize this box</p>
+                    </div>
+                    <div class="anchor-info">
+                        <span>TL: </span><span id="tlPoint">(50px, 50px)</span>
+                        <span class="separator">|</span>
+                        <span>BR: </span><span id="brPoint">(300px, 200px)</span>
+                        <span class="separator">|</span>
+                        <span>W: </span><span id="rectWidth">250px</span>
+                        <span class="separator">|</span>
+                        <span>H: </span><span id="rectHeight">150px</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="padding-inline-example">
+            <div class="example-group">
+                <h3>5. Logical Padding for Different Text Directions</h3>
+                <div class="browser-support">Browser Support: 98.5% (Chrome 69+, Edge 79+, Safari 12.1+, Firefox 41+)</div>
+                <p>
+                    The padding-inline properties adapt to the text direction, making them ideal for multilingual layouts.
+                    This example shows how padding-inline-start and padding-inline-end work with different writing modes.
+                </p>
+                <div class="example-code">
+                    <pre><code class="language-css">.text-block {
+    padding-inline-start: 2rem;
+    padding-inline-end: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* RTL text */
+.rtl-text {
+    direction: rtl;
+}
+
+/* Vertical text */
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}</code></pre>
+                </div>
+
+                <div class="direction-examples">
+                    <div class="direction-example">
+                        <h4>Left-to-Right (LTR)</h4>
+                        <div class="text-block">
+                            This is a sample text in left-to-right direction. The padding-inline-start creates space on the left, while padding-inline-end creates space on the right.
+                        </div>
+                    </div>
+
+                    <div class="direction-example">
+                        <h4>Right-to-Left (RTL)</h4>
+                        <div class="text-block rtl-text">
+                            هذا نص عربي من اليمين إلى اليسار. padding-inline-start يخلق مساحة على اليمين، بينما padding-inline-end يخلق مساحة على اليسار.
+                        </div>
+                    </div>
+
+                    <div class="direction-example">
+                        <h4>Vertical (Top-to-Bottom)</h4>
+                        <div class="text-block vertical-text">
+                            これは縦書きのテキストです。padding-inline-startは上にスペースを作り、padding-inline-endは下にスペースを作ります。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="tips_and_tricks.js"></script>
+</body>
+</html> 

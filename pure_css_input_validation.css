@@ -1,0 +1,237 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* Ensure all direct children of container respect max-width */
+.container > * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.intro {
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.intro p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1rem;
+}
+
+.example-group {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.example-group:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.example-group h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.example-group p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.example-code {
+    background-color: #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.example-code pre {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.example-code code {
+    display: block;
+    text-align: left;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e6e6e6;
+    padding: 0;
+    margin: 0;
+    white-space: pre;
+    tab-size: 4;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+/* Input Validation Styles */
+.input-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.input_group {
+    --default-border-color: #ccc;
+    --focus-color: #4a90e2;
+    --valid-color: #4caf50;
+    --invalid-color: #f44336;
+    
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input_group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    text-align: left;
+    width: 100%;
+}
+
+.input_group .input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--default-border-color);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Override Chrome's autofill styles */
+.input_group .input:-webkit-autofill,
+.input_group .input:-webkit-autofill:hover,
+.input_group .input:-webkit-autofill:focus {
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.9);
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ensure the background color stays consistent when autofilled */
+.input_group:has(.input:-webkit-autofill) .input {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.input_group .input:focus {
+    outline: none;
+    border-color: var(--focus-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.input_group::after {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.input_group:has(.input:user-valid) {
+    --default-border-color: var(--valid-color);
+    --focus-color: var(--valid-color);
+}
+
+.input_group:has(.input:user-valid)::after {
+    content: "✓";
+    color: var(--valid-color);
+}
+
+.input_group:has(.input:user-invalid) {
+    --default-border-color: var(--invalid-color);
+    --focus-color: var(--invalid-color);
+}
+
+.input_group:has(.input:user-invalid)::after {
+    content: "✗";
+    color: var(--invalid-color);
+}
+
+/* Custom Message Styles */
+.input_group.custom-message {
+    --error-message: "Please enter a valid value";
+}
+
+.input_group.custom-message:has(.input:invalid)::before {
+    content: var(--error-message);
+    color: var(--invalid-color);
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.input_group.custom-message:has(.input:invalid:focus)::before {
+    opacity: 1;
+}
+
+.input_group .input:disabled {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.input_group .input:disabled::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.input_group:has(.input:disabled) label {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input_group:has(.input:disabled)::after {
+    content: "🔒";
+    color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .input-examples {
+        gap: 1rem;
+    }
+    
+    .input_group .input {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .example-code code {
+        font-size: 0.8rem;
+    }
+} 

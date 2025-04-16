@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OKLCH Colors</title>
+    <link rel="stylesheet" href="oklch_colors.css">
+    <link rel="stylesheet" href="common.css">
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <!-- Highlight.js Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Highlight.js CSS Language Support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <div class="back-button-wrapper">
+        <a href="index.html" class="back-button">Back to Projects</a>
+    </div>
+    <div class="container">
+        <div class="intro">
+            <h1>OKLCH Colors</h1>
+            <p>
+                OKLCH is a modern color space that provides better perceptual uniformity and more intuitive color manipulation
+                compared to traditional color spaces like RGB or HSL. It stands for:
+            </p>
+            <table class="oklch-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OK</td>
+                        <td>Perceptually uniform lightness</td>
+                        <td>Provides consistent visual steps in lightness</td>
+                        <td>0-1</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>Lightness</td>
+                        <td>Controls the brightness of the color</td>
+                        <td>0-1</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>Chroma</td>
+                        <td>Controls the color intensity</td>
+                        <td>0-0.4</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>Hue</td>
+                        <td>Determines the color's position on the color wheel</td>
+                        <td>0-360°</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="demo-section">
+            <div class="color-demo">
+                <h2>Color Examples</h2>
+                <div class="color-grid">
+                    <div class="color-box">
+                        <div class="color-swatch" style="background-color: oklch(0.7 0.2 30)"></div>
+                        <div class="color-info">
+                            <code>oklch(0.7 0.2 30)</code>
+                            <p>Light orange</p>
+                        </div>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background-color: oklch(0.5 0.3 120)"></div>
+                        <div class="color-info">
+                            <code>oklch(0.5 0.3 120)</code>
+                            <p>Medium green</p>
+                        </div>
+                    </div>
+                    <div class="color-box">
+                        <div class="color-swatch" style="background-color: oklch(0.3 0.4 240)"></div>
+                        <div class="color-info">
+                            <code>oklch(0.3 0.4 240)</code>
+                            <p>Deep blue</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hue-spectrum">
+                    <h3>Hue Spectrum</h3>
+                    <div class="spectrum-gradient"></div>
+                    <div class="spectrum-info">
+                        <pre><code class="language-css">background: conic-gradient(
+    from 0deg,
+    oklch(0.6 0.2 0),
+    oklch(0.6 0.2 60),
+    oklch(0.6 0.2 120),
+    oklch(0.6 0.2 180),
+    oklch(0.6 0.2 240),
+    oklch(0.6 0.2 300),
+    oklch(0.6 0.2 360)
+);</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="color-variations">
+                <h2>Color Variations</h2>
+                <div class="variation-grid">
+                    <div class="variation-group">
+                        <h3>Lightness Variation</h3>
+                        <div class="variation-swatches">
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.2 0.2 30)"></div>
+                                <div class="variation-code">oklch(0.2 0.2 30)</div>
+                            </div>
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.4 0.2 30)"></div>
+                                <div class="variation-code">oklch(0.4 0.2 30)</div>
+                            </div>
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.6 0.2 30)"></div>
+                                <div class="variation-code">oklch(0.6 0.2 30)</div>
+                            </div>
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.8 0.2 30)"></div>
+                                <div class="variation-code">oklch(0.8 0.2 30)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="variation-group">
+                        <h3>Chroma Variation</h3>
+                        <div class="variation-swatches">
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.5 0.1 120)"></div>
+                                <div class="variation-code">oklch(0.5 0.1 120)</div>
+                            </div>
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.5 0.2 120)"></div>
+                                <div class="variation-code">oklch(0.5 0.2 120)</div>
+                            </div>
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.5 0.3 120)"></div>
+                                <div class="variation-code">oklch(0.5 0.3 120)</div>
+                            </div>
+                            <div class="variation-swatch-container">
+                                <div class="variation-swatch" style="background-color: oklch(0.5 0.4 120)"></div>
+                                <div class="variation-code">oklch(0.5 0.4 120)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="practical-examples">
+            <h2>Practical Examples</h2>
+            
+            <div class="example-group">
+                <h3>1. Creating Harmonious Color Schemes</h3>
+                <p>OKLCH makes it easy to create harmonious color schemes by maintaining consistent lightness and chroma while varying the hue.</p>
+                <div class="example-code">
+                    <pre><code class="language-css">:root {
+    --primary: oklch(0.6 0.2 30);
+    --secondary: oklch(0.6 0.2 120);
+    --accent: oklch(0.6 0.2 240);
+    --background: oklch(0.95 0.02 30);
+    --text: oklch(0.3 0.02 30);
+}</code></pre>
+                </div>
+                <div class="example-preview">
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 30)"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 120)"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 240)"></div>
+                </div>
+            </div>
+
+            <div class="example-group">
+                <h3>2. Accessible Color Contrast</h3>
+                <p>OKLCH's perceptual uniformity makes it easier to create accessible color combinations with proper contrast ratios.</p>
+                <div class="example-code">
+                    <pre><code class="language-css">.text-primary {
+    color: oklch(0.3 0.02 30);
+    background-color: oklch(0.95 0.02 30);
+}
+
+.text-secondary {
+    color: oklch(0.4 0.02 30);
+    background-color: oklch(0.9 0.02 30);
+}</code></pre>
+                </div>
+                <div class="contrast-preview">
+                    <div class="contrast-example" style="background-color: oklch(0.95 0.02 30); color: oklch(0.3 0.02 30);">
+                        High Contrast Text
+                    </div>
+                    <div class="contrast-example" style="background-color: oklch(0.9 0.02 30); color: oklch(0.4 0.02 30);">
+                        Medium Contrast Text
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-group">
+                <h3>3. Smooth Color Transitions</h3>
+                <p>OKLCH provides smooth, perceptually uniform transitions between colors, perfect for animations and gradients.</p>
+                <div class="example-code">
+                    <pre><code class="language-css">.gradient-button {
+    background: linear-gradient(
+        to right,
+        oklch(0.6 0.2 30),
+        oklch(0.6 0.2 120)
+    );
+    transition: background 0.3s ease;
+}
+
+.gradient-button:hover {
+    background: linear-gradient(
+        to right,
+        oklch(0.7 0.2 30),
+        oklch(0.7 0.2 120)
+    );
+}</code></pre>
+                </div>
+                <div class="transition-preview">
+                    <button class="gradient-button">Hover Me</button>
+                </div>
+            </div>
+
+            <div class="example-group">
+                <h3>4. Dark/Light Mode with OKLCH</h3>
+                <p>OKLCH makes it easy to create consistent color schemes across dark and light modes by maintaining perceptual uniformity.</p>
+                <div class="example-code">
+                    <pre><code class="language-css">:root {
+    /* Light mode */
+    --background: oklch(0.95 0.02 30);
+    --text: oklch(0.3 0.02 30);
+    --primary: oklch(0.6 0.2 30);
+    --secondary: oklch(0.6 0.2 120);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark mode - same colors but inverted lightness */
+        --background: oklch(0.3 0.02 30);
+        --text: oklch(0.95 0.02 30);
+        --primary: oklch(0.4 0.2 30);
+        --secondary: oklch(0.4 0.2 120);
+    }
+}</code></pre>
+                </div>
+                <div class="contrast-preview">
+                    <div class="contrast-example" style="background-color: oklch(0.95 0.02 30); color: oklch(0.3 0.02 30);">
+                        Light Mode Preview
+                    </div>
+                    <div class="contrast-example" style="background-color: oklch(0.3 0.02 30); color: oklch(0.95 0.02 30);">
+                        Dark Mode Preview
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-group">
+                <h3>5. Dynamic Color Variations with 'from' Keyword</h3>
+                <p>OKLCH's 'from' keyword allows you to create dynamic color variations while maintaining color harmony.</p>
+                <div class="example-code">
+                    <pre><code class="language-css">.btn {
+    --bg-color: oklch(0.6 0.2 30);
+    background-color: var(--bg-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    background-color: oklch(from var(--bg-color) calc(l - 0.075) c h);
+    box-shadow: 0 0 5px 0 oklch(from var(--bg-color) calc(l - 0.15) c h);
+}
+
+.btn:active {
+    background-color: oklch(from var(--bg-color) calc(l - 0.15) c h);
+    transform: translateY(2px);
+}
+
+/* Alternative button style */
+.btn-alt {
+    --bg-color: oklch(0.6 0.2 120);
+    background-color: var(--bg-color);
+}
+
+/* Danger button style */
+.btn-danger {
+    --bg-color: oklch(0.6 0.2 0);
+    background-color: var(--bg-color);
+}</code></pre>
+                </div>
+                <div class="button-preview">
+                    <button class="btn">Primary Button</button>
+                    <button class="btn btn-alt">Alternative Button</button>
+                    <button class="btn btn-danger">Danger Button</button>
+                </div>
+            </div>
+
+            <div class="example-group">
+                <h3>6. Design System with Brand Colors</h3>
+                <p>OKLCH is perfect for creating a comprehensive design system with consistent brand colors and their variations.</p>
+                <div class="example-code">
+                    <pre><code class="language-css">:root {
+    /* Color System Variables */
+    --brand-hue: 30;
+    --brand-chroma: 0.2;
+    --brand-lightness: 0.6;
+    
+    --success-hue: 120;
+    --warning-hue: 60;
+    --error-hue: 0;
+    --info-hue: 240;
+    
+    --neutral-hue: 30;
+    --neutral-chroma: 0.02;
+
+    /* Brand Colors */
+    --brand-primary: oklch(var(--brand-lightness) var(--brand-chroma) var(--brand-hue));
+    --brand-secondary: oklch(var(--brand-lightness) var(--brand-chroma) calc(var(--brand-hue) + 90));
+    --brand-accent: oklch(var(--brand-lightness) var(--brand-chroma) calc(var(--brand-hue) + 210));
+
+    /* Semantic Colors */
+    --success: oklch(var(--brand-lightness) var(--brand-chroma) var(--success-hue));
+    --warning: oklch(var(--brand-lightness) var(--brand-chroma) var(--warning-hue));
+    --error: oklch(var(--brand-lightness) var(--brand-chroma) var(--error-hue));
+    --info: oklch(var(--brand-lightness) var(--brand-chroma) var(--info-hue));
+
+    /* Neutral Colors */
+    --neutral-100: oklch(0.95 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-200: oklch(0.85 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-300: oklch(0.75 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-400: oklch(0.65 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-500: oklch(0.55 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-600: oklch(0.45 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-700: oklch(0.35 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-800: oklch(0.25 var(--neutral-chroma) var(--neutral-hue));
+    --neutral-900: oklch(0.15 var(--neutral-chroma) var(--neutral-hue));
+}</code></pre>
+                </div>
+                <div class="color-swatches">
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 30);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 120);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 240);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 60);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.6 0.2 0);"></div>
+                </div>
+                <div class="neutral-swatches" style="margin-top: 1rem;">
+                    <div class="harmony-swatch" style="background-color: oklch(0.95 0.02 30);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.85 0.02 30);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.75 0.02 30);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.65 0.02 30);"></div>
+                    <div class="harmony-swatch" style="background-color: oklch(0.55 0.02 30);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

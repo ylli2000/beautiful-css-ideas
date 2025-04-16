@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Borders</title>
+    <link rel="stylesheet" href="border_animated.css">
+    <link rel="stylesheet" href="common.css">
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <!-- Highlight.js Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Highlight.js CSS Language Support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <div class="back-button-wrapper">
+        <a href="index.html" class="back-button">Back to Projects</a>
+    </div>
+    <div class="container">
+        <div class="intro">
+            <h1>Animated Borders</h1>
+            <p>
+                Creative border animations that add dynamic visual interest to your elements.
+                These effects can enhance user interaction and create engaging interfaces.
+            </p>
+        </div>
+
+        <div class="example-group">
+            <h3>Simple Border Color Transition</h3>
+            <p>This example shows a basic border color transition on hover. The border smoothly changes from one color to another.</p>
+            <div class="example-code">
+                <pre><code class="language-css">.animated-box.sample1 {
+    border: 4px solid #2866aa; 
+    transition: all 0.3s ease;
+}
+
+.animated-box.sample1:hover {
+    border: 4px solid #3498db; 
+    transition: all 0.3s ease;
+}</code></pre>
+            </div>
+            <div class="animated-box sample1">
+                <h1>Border Animation</h1>
+                <p>
+                    Only single color can be applied to the border in this first example.
+                    That is not very pretty, So let's look at the second example.
+                </p>
+            </div>
+        </div>
+
+        <div class="example-group">
+            <h3>Conic Gradient Border Animation</h3>
+            <p>This example uses a conic gradient and CSS custom properties to create a rotating border animation.</p>
+            <div class="example-code">
+                <pre><code class="language-css">.animated-box.sample2::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    background-image: conic-gradient(from var(--angle), transparent 33%, #00ff99, #9900ff, #0099ff);
+    animation: rotate 3s linear infinite;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}</code></pre>
+            </div>
+            <div class="animated-box sample2">
+                <h1>Animation with Angle as Variable</h1>
+                <p>
+                    @Property rule is a new feature. Firstly, we use conic-gradient to create a border that changes color.
+                    The gradient starts with a transparent 33% in length, so the animation looks like a running worm.
+                    Then we use the from-to with @property --angle from 0deg to 360deg variable to animate the rotating gradient.
+                </p>
+            </div>
+        </div>
+
+        <div class="example-group">
+            <h3>Border and Shadow Animation</h3>
+            <p>This example combines border animation with a glowing shadow effect for a more dramatic appearance.</p>
+            <div class="example-code">
+                <pre><code class="language-css">.animated-box.sample3::before, .animated-box.sample3::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    background-image: conic-gradient(from var(--angle), #ff8800,#00ff99, #9900ff, #0099ff, #ff8800);
+    animation: rotate 3s linear infinite;
+}
+
+.animated-box.sample3::after {
+    filter: blur(1.5rem);
+    opacity: 0.25;
+}</code></pre>
+            </div>
+            <div class="animated-box sample3">
+                <h1>Apply to both Border and Shadow</h1>
+                <p>
+                    There is a trick here, notice the first and last color are the same, so the color transition looks smooth.
+                    Then we apply filter blur and a bit of opacity to the ::after element to make the shadow look more realistic.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

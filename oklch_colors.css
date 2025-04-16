@@ -1,0 +1,530 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* Ensure all direct children of container respect max-width */
+.container > * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.intro {
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.intro p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1rem;
+}
+
+.intro ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.intro li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.intro li::before {
+    content: "•";
+    color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    left: 0;
+}
+
+.demo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.color-demo {
+    margin-bottom: 0;
+    max-width: 100%;
+}
+
+.color-demo h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.color-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.color-box:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.color-swatch {
+    width: 100%;
+    height: 100px;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.color-info {
+    text-align: center;
+}
+
+.color-info code {
+    display: block;
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+.color-variations {
+    margin-bottom: 0;
+}
+
+.color-variations h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.variation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.variation-group {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: calc(100% - 4rem); /* Account for container padding */
+}
+
+.variation-group:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.variation-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.variation-swatches {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.variation-swatch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.variation-swatch {
+    height: 80px;
+    width: 100%;
+    border-radius: 0.25rem;
+}
+
+.variation-code {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.oklch-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.oklch-table th,
+.oklch-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oklch-table th {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.oklch-table td {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.oklch-table tr:last-child td {
+    border-bottom: none;
+}
+
+.oklch-table tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .container > * {
+        max-width: 100%;
+    }
+    
+    .variation-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .color-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .variation-swatches {
+        grid-template-columns: 1fr;
+    }
+    
+    .variation-code {
+        font-size: 0.8rem;
+    }
+    
+    .example-group {
+        max-width: calc(100% - 2rem); /* Adjust for smaller container padding */
+    }
+    
+    .variation-swatch {
+        height: 60px;
+    }
+}
+
+.practical-examples {
+    margin-top: 3rem;
+    max-width: 100%;
+}
+
+.practical-examples h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.example-group {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.example-group:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.example-group h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.example-group p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.example-code {
+    background-color: #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.example-code pre {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.example-code code {
+    display: block;
+    text-align: left;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e6e6e6;
+    padding: 0;
+    margin: 0;
+    white-space: pre;
+    tab-size: 4;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.harmony-swatch {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    margin-right: 1rem;
+    display: inline-block;
+}
+
+.contrast-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contrast-example {
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.gradient-button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(
+        to right,
+        oklch(0.6 0.2 30),
+        oklch(0.6 0.2 120)
+    );
+    transition: background 0.3s ease;
+}
+
+.gradient-button:hover {
+    background: linear-gradient(
+        to right,
+        oklch(0.7 0.2 30),
+        oklch(0.7 0.2 120)
+    );
+}
+
+@media (max-width: 768px) {
+    .harmony-swatch {
+        width: 80px;
+        height: 80px;
+        margin-right: 0.5rem;
+    }
+    
+    .example-code {
+        padding: 0.75rem;
+    }
+    
+    .example-code code {
+        font-size: 0.8rem;
+    }
+}
+
+.button-preview {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    --bg-color: oklch(0.6 0.2 30);
+    background-color: var(--bg-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    background-color: oklch(from var(--bg-color) calc(l - 0.075) c h);
+    box-shadow: 0 0 5px 0 oklch(from var(--bg-color) calc(l - 0.15) c h);
+}
+
+.btn:active {
+    background-color: oklch(from var(--bg-color) calc(l - 0.15) c h);
+    transform: translateY(2px);
+}
+
+.btn-alt {
+    --bg-color: oklch(0.6 0.2 120);
+}
+
+.btn-danger {
+    --bg-color: oklch(0.6 0.2 0);
+}
+
+@media (max-width: 768px) {
+    .button-preview {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+.hue-spectrum {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hue-spectrum h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.spectrum-gradient {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background: conic-gradient(
+        from 0deg,
+        oklch(0.6 0.2 0),
+        oklch(0.6 0.2 60),
+        oklch(0.6 0.2 120),
+        oklch(0.6 0.2 180),
+        oklch(0.6 0.2 240),
+        oklch(0.6 0.2 300),
+        oklch(0.6 0.2 360)
+    );
+}
+
+.spectrum-info {
+    background-color: #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.spectrum-info pre {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.spectrum-info code {
+    display: block;
+    text-align: left;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e6e6e6;
+    white-space: pre;
+    tab-size: 4;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+/* Ensure all code blocks with highlight.js have consistent styling */
+.hljs {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    display: block;
+}
+
+/* Add a subtle scrollbar style */
+::-webkit-scrollbar {
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .spectrum-gradient {
+        height: 150px;
+    }
+    
+    .spectrum-info code {
+        font-size: 0.8rem;
+    }
+} 

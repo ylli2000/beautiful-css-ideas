@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure CSS Input Validation</title>
+    <link rel="stylesheet" href="pure_css_input_validation.css">
+    <link rel="stylesheet" href="common.css">
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <!-- Highlight.js Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Highlight.js CSS Language Support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+    <!-- Initialize Highlight.js -->
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <div class="back-button-wrapper">
+        <a href="index.html" class="back-button">Back to Projects</a>
+    </div>
+    <div class="container">
+        <div class="intro">
+            <h1>Pure CSS Input Validation</h1>
+            <p>
+                Modern CSS provides powerful selectors and pseudo-classes that allow us to create
+                input validation states without JavaScript. This example demonstrates how to use
+                the `:has()`, `:user-valid`, and `:user-invalid` selectors to create beautiful
+                validation states.
+            </p>
+        </div>
+
+        <div class="example-group">
+            <h3>Basic Input Validation</h3>
+            <p>Using `:has()`, `:user-valid`, and `:user-invalid` to create validation states.</p>
+            <div class="example-code">
+                <pre><code class="language-css">.input_group {
+    --default-border-color: #ccc;
+    --focus-color: #4a90e2;
+    --valid-color: #4caf50;
+    --invalid-color: #f44336;
+    
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input_group::after {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.input_group:has(.input:user-valid) {
+    --default-border-color: var(--valid-color);
+    --focus-color: var(--valid-color);
+}
+
+.input_group:has(.input:user-valid)::after {
+    content: "✓";
+    color: var(--valid-color);
+}
+
+.input_group:has(.input:user-invalid) {
+    --default-border-color: var(--invalid-color);
+    --focus-color: var(--invalid-color);
+}
+
+.input_group:has(.input:user-invalid)::after {
+    content: "✗";
+    color: var(--invalid-color);
+}
+
+/* Disabled Input Styles */
+.input_group .input:disabled {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.input_group .input:disabled::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.input_group:has(.input:disabled) label {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.input_group:has(.input:disabled)::after {
+    content: "🔒";
+    color: rgba(255, 255, 255, 0.4);
+}</code></pre>
+            </div>
+            <div class="input-examples">
+                <div class="input_group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="input" required placeholder="Enter your email">
+                </div>
+                <div class="input_group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="input" required minlength="8" placeholder="Enter your password">
+                </div>
+                <div class="input_group">
+                    <label for="url">Website URL</label>
+                    <input type="url" id="url" class="input" required placeholder="Enter a valid URL">
+                </div>
+                <div class="input_group">
+                    <label for="disabled-input">Disabled Input</label>
+                    <input type="text" id="disabled-input" class="input" disabled placeholder="This input is disabled">
+                </div>
+            </div>
+        </div>
+
+        <div class="example-group">
+            <h3>Custom Validation Messages</h3>
+            <p>Using `:has()` with `:invalid` to show custom validation messages.</p>
+            <div class="example-code">
+                <pre><code class="language-css">.input_group {
+    --error-message: "Please enter a valid value";
+}
+
+.input_group:has(.input:invalid)::before {
+    content: var(--error-message);
+    color: var(--invalid-color);
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.input_group:has(.input:invalid:focus)::before {
+    opacity: 1;
+}</code></pre>
+            </div>
+            <div class="input-examples">
+                <div class="input_group custom-message">
+                    <label for="custom-email">Custom Email</label>
+                    <input type="email" id="custom-email" class="input" required placeholder="Enter your email">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

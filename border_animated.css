@@ -1,0 +1,192 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* Ensure all direct children of container respect max-width */
+.container > * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.intro {
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.intro p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1rem;
+}
+
+.example-group {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, background 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.example-group:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.example-group h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    text-align: left;
+}
+
+.example-group p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    width: 100%;
+    text-align: left;
+}
+
+.example-code {
+    background-color: #1a1a1a;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.example-code pre {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.example-code code {
+    display: block;
+    text-align: left;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e6e6e6;
+    padding: 0;
+    margin: 0;
+    white-space: pre;
+    tab-size: 4;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.animated-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    width: 400px;
+    border-radius: 10px;
+    background-color: #292c3e;
+    cursor: pointer;
+}
+
+/*----------------------------------*/
+.animated-box.sample1 {
+    border: 4px solid #2866aa; 
+    transition: all 0.3s ease;
+}
+
+.animated-box.sample1:hover {
+    border: 4px solid #3498db; 
+    transition: all 0.3s ease;
+} 
+
+/*----------------------------------*/
+.animated-box.sample2::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+
+    padding: 3px;
+    border-radius: 10px;
+    background-image: conic-gradient(from var(--angle), transparent 33%, #00ff99, #9900ff, #0099ff);
+    animation: rotate 3s linear infinite;
+}
+
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+/*----------------------------------*/
+/* add to both ::before and ::after, one for border, one for shadow */
+.animated-box.sample3::before, .animated-box.sample3::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+
+    padding: 3px;
+    border-radius: 10px;
+    background-image: conic-gradient(from var(--angle), #ff8800,#00ff99, #9900ff, #0099ff, #ff8800);
+    animation: rotate 3s linear infinite;
+}
+
+.animated-box.sample3::after {
+    filter: blur(1.5rem);
+    opacity: 0.25;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .example-code code {
+        font-size: 0.8rem;
+    }
+    
+    .animated-box {
+        width: 100%;
+        max-width: 400px;
+    }
+}
