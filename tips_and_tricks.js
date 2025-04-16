@@ -78,12 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const floatingIndex = document.querySelector('.floating-index');
     const burgerButton = document.querySelector('.burger-button');
 
+    // Ensure the floating index is properly initialized on page load
+    if (floatingIndex) {
+        // Force a reflow to ensure proper initial styles
+        floatingIndex.classList.remove('open');
+        
+        // On mobile, start with menu closed
+        if (window.innerWidth <= 1200) {
+            floatingIndex.classList.remove('open');
+        }
+    }
+
     // Burger menu toggle
     if (burgerButton && floatingIndex) {
         burgerButton.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation(); // Prevent document click from immediately closing
             floatingIndex.classList.toggle('open');
         });
+    } else {
+        console.warn('Burger button or floating index not found');
     }
 
     // Close menu when clicking on links
@@ -98,6 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (floatingIndex && !floatingIndex.contains(e.target) && floatingIndex.classList.contains('open')) {
+            floatingIndex.classList.remove('open');
+        }
+    });
+
+    // Add a check for screen resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1200 && floatingIndex) {
             floatingIndex.classList.remove('open');
         }
     });

@@ -3,12 +3,21 @@
     margin: 0 auto;
     padding: 2rem;
     overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Global styles to prevent horizontal overflow */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Ensure all direct children of container respect max-width */
 .container > * {
     max-width: 100%;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .intro {
@@ -63,14 +72,24 @@
     text-align: left;
 }
 
+/* Added code container styles for better handling of code blocks */
+.code-container {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    margin: 1rem 0;
+    max-width: 100%;
+}
+
 .example-code {
     background-color: #1a1a1a;
     border-radius: 0.5rem;
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 0;
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+    max-width: 100%;
 }
 
 .example-code pre {
@@ -80,6 +99,7 @@
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+    max-width: 100%;
 }
 
 .example-code code {
@@ -93,9 +113,38 @@
     margin: 0;
     white-space: pre;
     tab-size: 4;
-    width: 100%;
+    width: max-content;
+    min-width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+}
+
+/* Optimize scrollbar appearance */
+.example-code::-webkit-scrollbar {
+    height: 6px;
+}
+
+.example-code::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.example-code::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.example-code::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure highlight.js styles don't break layout */
+.hljs {
+    background: transparent !important;
+    padding: 0 !important;
+    overflow-x: visible !important;
+    width: max-content !important;
+    min-width: 100% !important;
 }
 
 .animated-box {
@@ -179,14 +228,74 @@
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .example-group {
+        padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .code-container {
+        margin: 0.5rem 0;
+        border-radius: 0.5rem;
+        overflow-x: hidden;
+    }
+    
+    .example-code {
+        padding: 0.75rem;
+        overflow-x: auto;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .example-code pre {
+        max-width: 100%;
+        overflow-x: auto;
+        width: auto;
     }
     
     .example-code code {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        max-width: none;
+        width: max-content;
+        min-width: 100%;
     }
     
     .animated-box {
         width: 100%;
         max-width: 400px;
+        padding: 1.5rem;
+    }
+}
+
+/* Additional fixes for very small screens */
+@media (max-width: 480px) {
+    .example-code {
+        padding: 0.5rem;
+        margin: 0;
+        width: 100%;
+        border-radius: 4px;
+    }
+    
+    .example-code code {
+        font-size: 0.7rem;
+    }
+    
+    .animated-box {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .animated-box h1 {
+        font-size: 1.4rem;
+    }
+    
+    .animated-box p {
+        font-size: 0.9rem;
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pure CSS Input Validation</title>
     <link rel="stylesheet" href="pure_css_input_validation.css">
     <link rel="stylesheet" href="common.css">
@@ -33,8 +33,9 @@
         <div class="example-group">
             <h3>Basic Input Validation</h3>
             <p>Using `:has()`, `:user-valid`, and `:user-invalid` to create validation states.</p>
-            <div class="example-code">
-                <pre><code class="language-css">.input_group {
+            <div class="code-container">
+                <div class="example-code">
+                    <pre><code class="language-css">.input_group {
     --default-border-color: #ccc;
     --focus-color: #4a90e2;
     --valid-color: #4caf50;
@@ -92,6 +93,7 @@
     content: "🔒";
     color: rgba(255, 255, 255, 0.4);
 }</code></pre>
+                </div>
             </div>
             <div class="input-examples">
                 <div class="input_group">
@@ -116,8 +118,9 @@
         <div class="example-group">
             <h3>Custom Validation Messages</h3>
             <p>Using `:has()` with `:invalid` to show custom validation messages.</p>
-            <div class="example-code">
-                <pre><code class="language-css">.input_group {
+            <div class="code-container">
+                <div class="example-code">
+                    <pre><code class="language-css">.input_group {
     --error-message: "Please enter a valid value";
 }
 
@@ -135,6 +138,7 @@
 .input_group:has(.input:invalid:focus)::before {
     opacity: 1;
 }</code></pre>
+                </div>
             </div>
             <div class="input-examples">
                 <div class="input_group custom-message">

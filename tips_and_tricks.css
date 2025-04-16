@@ -405,7 +405,7 @@ html {
     border: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 100;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease, background-color 0.3s ease;
+    transition: width 0.3s ease, background 0.3s ease;
 }
 
 .index-header {
@@ -424,12 +424,28 @@ html {
     height: 15px;
     cursor: pointer;
     margin: 0.3rem;
+    position: relative;
 }
 
 .burger-button span {
     width: 100%;
     height: 1.5px;
     background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 1px;
+    transition: background-color 0.3s ease;
+}
+
+/* Remove the X transformation animations */
+.floating-index.open .burger-button span:nth-child(1) {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.floating-index.open .burger-button span:nth-child(2) {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.floating-index.open .burger-button span:nth-child(3) {
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .floating-index h4 {
@@ -490,40 +506,6 @@ html {
     border-radius: 50%;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes expandIndex {
-    0% {
-        transform: scale(0.95);
-        opacity: 0.9;
-    }
-    50% {
-        transform: scale(1.02);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
 @media (max-width: 1200px) {
     .floating-index {
         width: auto;
@@ -533,8 +515,7 @@ html {
         backdrop-filter: blur(10px);
         right: 1.5rem;
         top: 1.5rem;
-        transition: width 0.3s ease, background-color 0.3s ease;
-        overflow: hidden;
+        transition: width 0.3s ease, background 0.3s ease;
     }
 
     .index-header {
@@ -552,17 +533,11 @@ html {
         border-bottom: none;
         padding-bottom: 0;
         opacity: 0;
-    }
-    
-    .floating-index .index-list {
-        display: none;
-        opacity: 0;
+        transition: opacity 0.3s ease;
     }
     
     .floating-index.open {
         width: 200px;
-        background: rgba(40, 40, 40, 0.9);
-        animation: expandIndex 0.3s ease forwards;
     }
     
     .floating-index.open .index-header {
@@ -572,12 +547,18 @@ html {
     
     .floating-index.open h4 {
         display: block;
-        animation: fadeIn 0.4s ease forwards 0.1s;
+        opacity: 1;
+    }
+
+    .floating-index .index-list {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
 
     .floating-index.open .index-list {
         display: block;
-        animation: slideIn 0.4s ease forwards 0.2s;
+        opacity: 1;
     }
 }
 
