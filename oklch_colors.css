@@ -299,14 +299,12 @@ table {
 .practical-examples {
     margin-top: 3rem;
     max-width: 100%;
-    text-align: left;
 }
 
 .practical-examples h2 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, 0.9);
-    text-align: left;
 }
 
 .example-group {
@@ -320,7 +318,6 @@ table {
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
-    text-align: left;
 }
 
 .example-group:hover {
@@ -332,14 +329,12 @@ table {
     font-size: 1.4rem;
     margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.9);
-    text-align: left;
 }
 
 .example-group p {
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 1.5rem;
     line-height: 1.6;
-    text-align: left;
 }
 
 .example-code {
@@ -548,6 +543,12 @@ table {
     gap: 1rem;
     margin-top: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Also ensure the buttons have equal width */
+.button-preview .btn {
+    flex: 0 1 auto;
 }
 
 .btn {
@@ -586,10 +587,12 @@ table {
     .button-preview {
         flex-direction: column;
         align-items: stretch;
+        justify-content: center;
     }
     
     .btn {
         width: 100%;
+        margin: 0.5rem 0;
     }
 }
 
@@ -665,6 +668,19 @@ table {
     text-align: left !important;
 }
 
+/* Ensure all content within code blocks is left-aligned */
+.example-code * {
+    text-align: left !important;
+}
+
+/* Apply specifically to highlight.js elements */
+.example-code .hljs,
+.example-code pre,
+.example-code code,
+pre code.hljs {
+    text-align: left !important;
+}
+
 /* Add a subtle scrollbar style */
 ::-webkit-scrollbar {
     height: 8px;
@@ -694,8 +710,23 @@ table {
     }
 }
 
-/* General code formatting to ensure left alignment */
-pre, code {
+.example-code pre,
+.example-code code {
     text-align: left !important;
-    font-family: 'Fira Code', monospace;
+    white-space: pre !important;
+    tab-size: 4 !important;
+}
+
+/* Ensure indentation and spacing is preserved */
+.example-code .hljs-comment,
+.example-code .hljs-keyword,
+.example-code .hljs-selector-tag,
+.example-code .hljs-meta-keyword,
+.example-code .hljs-doctag,
+.example-code .hljs-section,
+.example-code .hljs-selector-class,
+.example-code .hljs-meta,
+.example-code .hljs-selector-pseudo,
+.example-code .hljs-attr {
+    text-align: left !important;
 } 
