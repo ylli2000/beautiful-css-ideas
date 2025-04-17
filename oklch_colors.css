@@ -299,12 +299,14 @@ table {
 .practical-examples {
     margin-top: 3rem;
     max-width: 100%;
+    text-align: left;
 }
 
 .practical-examples h2 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, 0.9);
+    text-align: left;
 }
 
 .example-group {
@@ -546,8 +548,6 @@ table {
     gap: 1rem;
     margin-top: 1rem;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
 }
 
 .btn {
@@ -631,7 +631,6 @@ table {
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
-    text-align: left;
 }
 
 .spectrum-info pre {
@@ -641,7 +640,6 @@ table {
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
-    text-align: left;
 }
 
 .spectrum-info code {
@@ -664,7 +662,7 @@ table {
     box-sizing: border-box;
     overflow-x: auto;
     display: block;
-    text-align: left;
+    text-align: left !important;
 }
 
 /* Add a subtle scrollbar style */
@@ -694,4 +692,10 @@ table {
     .spectrum-info code {
         font-size: 0.8rem;
     }
+}
+
+/* General code formatting to ensure left alignment */
+pre, code {
+    text-align: left !important;
+    font-family: 'Fira Code', monospace;
 } 
