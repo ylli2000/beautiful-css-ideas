@@ -318,6 +318,7 @@ table {
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    text-align: left;
 }
 
 .example-group:hover {
@@ -329,12 +330,14 @@ table {
     font-size: 1.4rem;
     margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.9);
+    text-align: left;
 }
 
 .example-group p {
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    text-align: left;
 }
 
 .example-code {
@@ -347,6 +350,7 @@ table {
     max-width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+    text-align: left;
 }
 
 .example-code pre {
@@ -356,6 +360,7 @@ table {
     max-width: 100%;
     font-family: 'Fira Code', monospace;
     font-size: 0.9rem;
+    text-align: left;
 }
 
 .example-code code {
@@ -363,6 +368,7 @@ table {
     color: #f8f8f2;
     max-width: 100%;
     overflow-wrap: break-word;
+    text-align: left;
 }
 
 @media (max-width: 768px) {
@@ -540,6 +546,8 @@ table {
     gap: 1rem;
     margin-top: 1rem;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .btn {
@@ -623,6 +631,7 @@ table {
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+    text-align: left;
 }
 
 .spectrum-info pre {
@@ -632,6 +641,7 @@ table {
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+    text-align: left;
 }
 
 .spectrum-info code {
@@ -654,6 +664,7 @@ table {
     box-sizing: border-box;
     overflow-x: auto;
     display: block;
+    text-align: left;
 }
 
 /* Add a subtle scrollbar style */
